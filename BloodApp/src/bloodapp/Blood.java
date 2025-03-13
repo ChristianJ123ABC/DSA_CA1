@@ -9,5 +9,36 @@ package bloodapp;
  * @author flips
  */
 public class Blood {
+    private String name;
+    private String gpDetails;
+
+    public Blood(String name, String gpDetails) {
+        this.name = name;
+        this.gpDetails = gpDetails;
+    }
+    
+    public Blood(){
+        name = " ";
+        gpDetails = " ";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGpDetails() {
+        return gpDetails;
+    }
+
+    public void setGpDetails(String gpDetails) {
+        this.gpDetails = gpDetails;
+    }
+    
+    
+    
     
 }
