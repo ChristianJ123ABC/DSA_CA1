@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
  */
 public class BloodGUI extends javax.swing.JFrame {
     private SInterface sBloodList;
-    private QInterface qBloodList;
     private PQInterface pqBloodList;
     
     
@@ -21,7 +20,6 @@ public class BloodGUI extends javax.swing.JFrame {
      */
     public BloodGUI() {
         sBloodList = new Stack();
-        qBloodList = new Queue();
         pqBloodList = new PriorityQueue();
         initComponents();
         
@@ -170,8 +168,9 @@ public class BloodGUI extends javax.swing.JFrame {
         }
         
         pqBloodList.enqueue(priority, b);
-        qBloodList.enqueue(b);
+        
         sBloodList.push(b);
+        
         if(priorityTf.getText().equals("1")){
             JOptionPane.showMessageDialog(null, "Patient with a low priority has been added: \n"+"Name: "+nameTf.getText()+ "\n GP Details: "+gpTf.getText()+"\n Priority: "+priority+"\n Age: "+ageTf.getText()+"\n "+ward);
         }
@@ -192,9 +191,13 @@ public class BloodGUI extends javax.swing.JFrame {
         //Makes an instance of the PQ arraylist and the Blood variables
         //Uses the setters and getters from the respective classes and displays them
         else{
+            
             PQElement pqElement = (PQElement) pqBloodList.dequeue();
             Blood bloodPatient = (Blood)pqElement.getPatient();
-            Blood sBlood = (Blood) sBloodList.reversePop(); //removes from the stack 
+           
+            
+           
+            
             
             
             JOptionPane.showMessageDialog(null, "Next Patient: "+bloodPatient.getName()+" \n Priority: "+pqElement.getPriority()+"\n Age: "+bloodPatient.getAge()+"\n "+bloodPatient.getWard());

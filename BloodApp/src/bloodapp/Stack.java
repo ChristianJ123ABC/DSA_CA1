@@ -26,6 +26,8 @@ public class Stack implements SInterface {
         return sBloodList.isEmpty();
     }
     
+ 
+    
     
     
     //removes item from top of stack
