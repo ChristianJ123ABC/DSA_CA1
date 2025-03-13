@@ -10,8 +10,8 @@ import java.util.*;
  *
  * @author flips
  */
-//added abstract to remove PrintPQueue error
-public abstract class PriorityQueue implements PQInterface {
+
+public class PriorityQueue implements PQInterface {
     
     //grabs arrayList from PQelement to store patient details
     private ArrayList<PQElement> pqBloodList;

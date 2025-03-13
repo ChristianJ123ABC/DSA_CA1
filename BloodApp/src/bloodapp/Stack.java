@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Stack implements SInterface {
     
-    private ArrayList<String> sBloodList;
+    private ArrayList<Blood> sBloodList;
     
     public Stack(){
         sBloodList = new ArrayList<Blood>();
@@ -59,7 +59,7 @@ public class Stack implements SInterface {
         else{
             message = "The stack contains: ";
             for(i=0; i<sBloodList.size(); i++){
-                message = message.concat(sBloodList.get(i));
+                message = message.concat(sBloodList.get(i).toString()); //Used to print an object
                 message = message.concat("; ");
             }
         }

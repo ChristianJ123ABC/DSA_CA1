@@ -17,5 +17,5 @@ public interface PQInterface {
     
     public boolean isEmpty();
     
-    public String PrintPQueue();
+    public String printPQueue();
 }

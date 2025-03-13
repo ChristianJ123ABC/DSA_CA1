@@ -38,6 +38,11 @@ public class Blood {
         this.gpDetails = gpDetails;
     }
     
+    //Used incase of object error when printing
+    public String toString(){
+        return "Name: "+name+"\n GP Details: "+gpDetails;
+    }
+    
     
     
     
