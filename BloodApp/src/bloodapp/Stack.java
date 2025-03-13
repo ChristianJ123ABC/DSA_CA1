@@ -40,15 +40,7 @@ public class Stack implements SInterface {
         }
     }
     
-    //reverse order of pop
-    public Object reversePop(){
-        if(!(sBloodList.isEmpty())){
-            return sBloodList.remove(sBloodList.size()-1);
-        }
-        else{
-            return null;
-        }
-    }
+    
     
     //puts item on top of stack
     public void push(Object newPatient){
@@ -70,15 +62,14 @@ public class Stack implements SInterface {
             message = message.concat("Stack is empty");
         }
         else{
-            message = "Last 5 Patients: \n ";
+            message = "Last 5 Patients who have not shown up: \n ";
             
             //If the amount of patients exceeds 5 in the list, it will remove the oldest person
-            for(i=0; i<sBloodList.size(); i++){
-               if(sBloodList.size() > 5){
-                 sBloodList.remove(sBloodList.size()-1);
-                }
-                message = message.concat(sBloodList.get(i).toString()+"\n"); //Used to print an object
-               
+            if(sBloodList.size() >= 6){
+                
+               message = message.concat(sBloodList.get(sBloodList.size()-1).toString()+"\n"); //Used to print an object
+
+                
             }
         }
         return message;

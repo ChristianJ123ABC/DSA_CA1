@@ -169,6 +169,7 @@ public class BloodGUI extends javax.swing.JFrame {
         
         pqBloodList.enqueue(priority, b);
         
+        
         sBloodList.push(b);
         
         if(priorityTf.getText().equals("1")){
@@ -207,7 +208,7 @@ public class BloodGUI extends javax.swing.JFrame {
 
     private void noShowBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noShowBtnActionPerformed
         // TODO add your handling code here:
-        
+           
            JOptionPane.showMessageDialog(null, sBloodList.displayStack());
         
     }//GEN-LAST:event_noShowBtnActionPerformed

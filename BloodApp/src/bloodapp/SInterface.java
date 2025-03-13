@@ -15,7 +15,7 @@ public interface SInterface {
 
     public Object pop();
     
-    public Object reversePop();
+
     
 
 
