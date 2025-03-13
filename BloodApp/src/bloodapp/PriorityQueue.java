@@ -31,6 +31,7 @@ public class PriorityQueue implements PQInterface {
     
     //Adds a new element with a priority added to it.
     public void enqueue(int priority, Object bloodPatient){
+        
         int index;
         PQElement newElement = new PQElement(priority, (Blood) bloodPatient);
         
@@ -78,4 +79,6 @@ public class PriorityQueue implements PQInterface {
         }
         return print;
     }
+    
+    
 }

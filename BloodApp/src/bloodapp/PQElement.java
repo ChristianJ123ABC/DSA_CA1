@@ -25,7 +25,7 @@ public class PQElement {
         this.priority = priority;
     }
 
-    public Blood getName() {
+    public Blood getPatient() {
         return bloodPatient;
     }
 

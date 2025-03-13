@@ -14,6 +14,8 @@ public interface SInterface {
     public void push(Object newItem);
 
     public Object pop();
+    
+    public Object reversePop();
 
     public int size();
 
