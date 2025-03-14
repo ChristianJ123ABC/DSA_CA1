@@ -10,6 +10,9 @@ import java.util.*;
  *
  * @author flips
  */
+//Sources: Week 2 - Abstract Data Types. Stack and Queue Stack App Solution
+//https://stackoverflow.com/questions/7185572/get-top-5-data-from-stack
+
 public class Stack implements SInterface {
     
     private ArrayList<Blood> sBloodList;
@@ -57,7 +60,7 @@ public class Stack implements SInterface {
     
     //Used exclusively for no show patients
     public String displayStack(){
-        int i;
+        
         String message =  " ";
         if(sBloodList.isEmpty()){
             message = message.concat("Stack is empty");

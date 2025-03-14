@@ -8,6 +8,7 @@ package bloodapp;
  *
  * @author flips
  */
+////Sources: Week 2 - Abstract Data Types. Stack and Queue Stack App Solution
 public interface SInterface {
     public boolean isEmpty();
 
@@ -15,10 +16,6 @@ public interface SInterface {
 
     public Object pop();
     
-
-    
-
-
     public int size();
 
     public void emptyStack();

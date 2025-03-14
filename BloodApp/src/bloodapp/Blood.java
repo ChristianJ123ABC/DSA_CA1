@@ -8,6 +8,9 @@ package bloodapp;
  *
  * @author flips
  */
+
+//Sources: Week 3 - SLL and PQ AEMaterHospital Solution
+
 public class Blood {
     private String name;
     private String gpDetails;
@@ -64,10 +67,12 @@ public class Blood {
         this.ward = ward;
     }
     
-    //Used incase of object error when printing
+    //Used incase of object error when printing SLLs
     public String toString(){
-        return "Name: "+name+"\n GP Details: "+gpDetails;
+        return "Name: "+name+"\nGP Details: "+gpDetails+"\n";
     }
+    
+   
     
     
     

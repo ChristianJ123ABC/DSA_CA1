@@ -24,7 +24,8 @@ public class PQElement {
     public void setPriority(int priority) {
         this.priority = priority;
     }
-
+    
+    //prints the object as a whole
     public Blood getPatient() {
         return bloodPatient;
     }
@@ -33,8 +34,8 @@ public class PQElement {
         this.bloodPatient = bloodPatient;
     }
     
-    
+    //prints details of patient
     public String getDetails(){
-        return "Name: "+bloodPatient.getName()+"\n GP Details: "+bloodPatient.getGpDetails();
+        return "Name: "+bloodPatient.getName()+"\nGP Details: "+bloodPatient.getGpDetails();
     }
 }

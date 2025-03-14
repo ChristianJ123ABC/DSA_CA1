@@ -13,8 +13,7 @@ import java.util.*;
  */
 
 
-//Sources: Recursion Moodle + AEMaterHospital Moodle
-//https://www.geeksforgeeks.org/introduction-to-recursion-2/
+
 
 public class PriorityQueue implements PQInterface {
     
@@ -42,6 +41,7 @@ public class PriorityQueue implements PQInterface {
         int index;
         PQElement newElement = new PQElement(priority, (Blood) bloodPatient);
         
+        //index of priority
         index = findInsertPosition(priority);
         
         if(index == size()){
@@ -74,6 +74,9 @@ public class PriorityQueue implements PQInterface {
         return pqBloodList.remove(0);
     }
     
+    
+    
+    
     //Returns the getDetails from Blood superclass and adds the priority to it
     public String printPQueue(){
         String print = new String();
@@ -88,7 +91,7 @@ public class PriorityQueue implements PQInterface {
     }
     
     //Similar to printPQueue, but it checks if the priority is equal to a specific one
-    
+    //EXAMPLE OF RECURSION
     public String patientPriority(int i, int priority){
         
         //Base case to stop index from going out of range
@@ -115,12 +118,15 @@ public class PriorityQueue implements PQInterface {
         else{
             return "";
         }
+    }
+    
+    
             
         
        
         
         
-    }
+    
    
 
 
