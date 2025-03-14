@@ -64,7 +64,7 @@ public class Stack implements SInterface {
         else{
             message = "Last 5 Patients who have not shown up: \n ";
             
-            //If the amount of patients exceeds 5 in the list, it will remove the oldest person
+            //If the amount of patients exceeds 5 in the list without them being seen, it will display the oldest person on the list
             if(sBloodList.size() >= 6){
                 
                message = message.concat(sBloodList.get(sBloodList.size()-1).toString()+"\n"); //Used to print an object

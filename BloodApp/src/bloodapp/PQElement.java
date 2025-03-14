@@ -9,8 +9,8 @@ package bloodapp;
  * @author flips
  */
 public class PQElement {
-    private int priority; //key 
-    private Blood bloodPatient;
+    public int priority; //key 
+    public Blood bloodPatient;
 
     public PQElement(int priority, Blood bloodPatient) {
         this.priority = priority;

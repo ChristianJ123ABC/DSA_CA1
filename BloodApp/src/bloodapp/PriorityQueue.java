@@ -29,6 +29,8 @@ public class PriorityQueue implements PQInterface {
         return pqBloodList.size();
     }
     
+    
+    
     //Adds a new element with a priority added to it.
     public void enqueue(int priority, Object bloodPatient){
         
@@ -79,6 +81,11 @@ public class PriorityQueue implements PQInterface {
         }
         return print;
     }
+    
+    
+   
+    
+    
     
     
 }

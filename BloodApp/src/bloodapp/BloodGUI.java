@@ -51,6 +51,7 @@ public class BloodGUI extends javax.swing.JFrame {
         wardWarnLbl = new javax.swing.JLabel();
         wardYesRb = new javax.swing.JRadioButton();
         wardNoRb = new javax.swing.JRadioButton();
+        urgentPatientsBtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,6 +128,15 @@ public class BloodGUI extends javax.swing.JFrame {
         wardNoRb.setText("No");
         getContentPane().add(wardNoRb, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, -1));
 
+        urgentPatientsBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        urgentPatientsBtn.setText("Urgent Patients");
+        urgentPatientsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                urgentPatientsBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(urgentPatientsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 150, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,11 +205,6 @@ public class BloodGUI extends javax.swing.JFrame {
             
             PQElement pqElement = (PQElement) pqBloodList.dequeue();
             Blood bloodPatient = (Blood)pqElement.getPatient();
-           
-            
-           
-            
-            
             
             JOptionPane.showMessageDialog(null, "Next Patient: "+bloodPatient.getName()+" \n Priority: "+pqElement.getPriority()+"\n Age: "+bloodPatient.getAge()+"\n "+bloodPatient.getWard());
         }
@@ -212,6 +217,14 @@ public class BloodGUI extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, sBloodList.displayStack());
         
     }//GEN-LAST:event_noShowBtnActionPerformed
+
+    private void urgentPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urgentPatientsBtnActionPerformed
+        // TODO add your handling code here:
+        
+        
+
+       
+    }//GEN-LAST:event_urgentPatientsBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,6 +275,7 @@ public class BloodGUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton priorityWarnBtn;
     private javax.swing.JToggleButton submitBtn;
     private javax.swing.JLabel titleLbl;
+    private javax.swing.JToggleButton urgentPatientsBtn;
     private javax.swing.JRadioButton wardNoRb;
     private javax.swing.ButtonGroup wardWarn;
     private javax.swing.JLabel wardWarnLbl;
