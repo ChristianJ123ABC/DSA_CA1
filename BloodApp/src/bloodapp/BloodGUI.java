@@ -45,12 +45,12 @@ public class BloodGUI extends javax.swing.JFrame {
 
         wardWarn = new javax.swing.ButtonGroup();
         titleLbl = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        nameLbl = new javax.swing.JLabel();
         priorityLbl = new javax.swing.JLabel();
         priorityTf = new javax.swing.JTextField();
         nameTf = new javax.swing.JTextField();
         priorityWarnBtn = new javax.swing.JToggleButton();
-        gpLbl1 = new javax.swing.JLabel();
+        gpLbl = new javax.swing.JLabel();
         gpTf = new javax.swing.JTextField();
         submitBtn = new javax.swing.JToggleButton();
         nextPatientBtn = new javax.swing.JToggleButton();
@@ -73,11 +73,11 @@ public class BloodGUI extends javax.swing.JFrame {
         titleLbl.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         titleLbl.setForeground(new java.awt.Color(255, 51, 51));
         titleLbl.setText("Blood Test");
-        getContentPane().add(titleLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 266, -1));
+        getContentPane().add(titleLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 266, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Name:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
+        nameLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nameLbl.setText("Name:");
+        getContentPane().add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
 
         priorityLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         priorityLbl.setText("Priority Level:");
@@ -92,11 +92,11 @@ public class BloodGUI extends javax.swing.JFrame {
                 priorityWarnBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(priorityWarnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 190, -1));
+        getContentPane().add(priorityWarnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 190, -1));
 
-        gpLbl1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        gpLbl1.setText("GP Details:");
-        getContentPane().add(gpLbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 110, -1));
+        gpLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        gpLbl.setText("GP Details:");
+        getContentPane().add(gpLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 110, -1));
         getContentPane().add(gpTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 170, 30));
 
         submitBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -197,44 +197,58 @@ public class BloodGUI extends javax.swing.JFrame {
     
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-        int priority;
-        String ward;
-        Blood b = new Blood();
-        b.setName(nameTf.getText());
-        b.setGpDetails(gpTf.getText());
-        b.setAge(Integer.parseInt(ageTf.getText()));
-        if(wardYesRb.isSelected()){
-            b.setWard("Status: Currently coming from ward");
-            ward = "Status: Currently coming from ward";
+        if(nameTf.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Name not entered");
         }
-        else if (wardNoRb.isSelected()){
-            b.setWard("Status: Not currently coming from ward");
-            ward = "Status: Not currently coming from ward";
+        else if(gpTf.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "GP Details not entered");
         }
-        
+        else if(ageTf.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Age  not entered");
+        }
+        else if(priorityTf.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Priority Level not entered");
+        }
         else{
-            JOptionPane.showMessageDialog(null, "Please state if you are coming from the hospital ward via the radio buttons");
-            return;
-        }
-        priority = Integer.parseInt(priorityTf.getText());
-        if(!priorityTf.getText().equals("1") && !priorityTf.getText().equals("2") && !priorityTf.getText().equals("3")){
-            JOptionPane.showMessageDialog(null, "Invalid Priority, please try again");
-            return;
-        }
-        
-        //Adds the object, b, to each ArrayList / ADT
-        pqBloodList.enqueue(priority, b);
-        sBloodList.push(b);
-        
-        
-        if(priorityTf.getText().equals("1")){
-            JOptionPane.showMessageDialog(null, "Patient with a low priority has been added: \n"+"Name: "+nameTf.getText()+ "\n GP Details: "+gpTf.getText()+"\n Priority: "+priority+"\n Age: "+ageTf.getText()+"\n "+ward);
-        }
-        else if(priorityTf.getText().equals("2")){
-            JOptionPane.showMessageDialog(null, "Patient with a medium priority has been added: \n"+"Name: "+nameTf.getText()+ "\n GP Details: "+gpTf.getText()+"\n Priority: "+priority+"\n Age: "+ageTf.getText()+"\n "+ward);
-        }
-        else if(priorityTf.getText().equals("3")){
-            JOptionPane.showMessageDialog(null, "Patient with an URGENT!! priority has been added: \n"+"Name: "+nameTf.getText()+ "\n GP Details: "+gpTf.getText()+"\n Priority: "+priority+"\n Age: "+ageTf.getText()+"\n "+ward);
+            int priority;
+            String ward;
+            Blood b = new Blood();
+            b.setName(nameTf.getText());
+            b.setGpDetails(gpTf.getText());
+            b.setAge(Integer.parseInt(ageTf.getText()));
+            if(wardYesRb.isSelected()){
+                b.setWard("Status: Currently coming from ward");
+                ward = "Status: Currently coming from ward";
+            }
+            else if (wardNoRb.isSelected()){
+                b.setWard("Status: Not currently coming from ward");
+                ward = "Status: Not currently coming from ward";
+            }
+
+            else{
+                JOptionPane.showMessageDialog(null, "Please state if you are coming from the hospital ward via the radio buttons");
+                return;
+            }
+            priority = Integer.parseInt(priorityTf.getText());
+            if(!priorityTf.getText().equals("1") && !priorityTf.getText().equals("2") && !priorityTf.getText().equals("3")){
+                JOptionPane.showMessageDialog(null, "Invalid Priority, please try again");
+                return;
+            }
+
+            //Adds the object, b, to each ArrayList / ADT
+            pqBloodList.enqueue(priority, b);
+            sBloodList.push(b);
+
+
+            if(priorityTf.getText().equals("1")){
+                JOptionPane.showMessageDialog(null, "Patient with a low priority has been added: \n"+"Name: "+nameTf.getText()+ "\n GP Details: "+gpTf.getText()+"\n Priority: "+priority+"\n Age: "+ageTf.getText()+"\n "+ward);
+            }
+            else if(priorityTf.getText().equals("2")){
+                JOptionPane.showMessageDialog(null, "Patient with a medium priority has been added: \n"+"Name: "+nameTf.getText()+ "\n GP Details: "+gpTf.getText()+"\n Priority: "+priority+"\n Age: "+ageTf.getText()+"\n "+ward);
+            }
+            else if(priorityTf.getText().equals("3")){
+                JOptionPane.showMessageDialog(null, "Patient with an URGENT!! priority has been added: \n"+"Name: "+nameTf.getText()+ "\n GP Details: "+gpTf.getText()+"\n Priority: "+priority+"\n Age: "+ageTf.getText()+"\n "+ward);
+            }
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
@@ -319,7 +333,17 @@ public class BloodGUI extends javax.swing.JFrame {
 
     private void historyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtnActionPerformed
         // TODO add your handling code here:
-        sll.printList();
+        
+            if(sll.isEmpty()){
+                JOptionPane.showMessageDialog(null, "No previous patients have been added");
+                
+            }
+            else{
+                sll.printList();
+               
+            }
+        
+        
     }//GEN-LAST:event_historyBtnActionPerformed
 
     /**
@@ -361,10 +385,10 @@ public class BloodGUI extends javax.swing.JFrame {
     private javax.swing.JLabel ageLbl;
     private javax.swing.JTextField ageTf;
     private javax.swing.JToggleButton allPatientsBtn;
-    private javax.swing.JLabel gpLbl1;
+    private javax.swing.JLabel gpLbl;
     private javax.swing.JTextField gpTf;
     private javax.swing.JToggleButton historyBtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel nameLbl;
     private javax.swing.JTextField nameTf;
     private javax.swing.JToggleButton nextPatientBtn;
     private javax.swing.JToggleButton noShowBtn;
