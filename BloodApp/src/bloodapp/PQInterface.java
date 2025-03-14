@@ -19,5 +19,5 @@ public interface PQInterface {
     
     public String printPQueue();
     
-    
+    public Object patientPriority(int i, int priority);
 }

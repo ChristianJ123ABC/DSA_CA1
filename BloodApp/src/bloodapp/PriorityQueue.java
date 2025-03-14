@@ -5,11 +5,16 @@
 package bloodapp;
 
 import java.util.*;
-//Source: AEMaterHospital Solution Week 3 Moodle
+//Sources: AEMaterHospital Solution Week 3 Moodle, Recursion PDF Moodle
+//https://www.geeksforgeeks.org/introduction-to-recursion-2/
 /**
  *
  * @author flips
  */
+
+
+//Sources: Recursion Moodle + AEMaterHospital Moodle
+//https://www.geeksforgeeks.org/introduction-to-recursion-2/
 
 public class PriorityQueue implements PQInterface {
     
@@ -77,11 +82,53 @@ public class PriorityQueue implements PQInterface {
         for(int i = 0; i<pqBloodList.size(); i++){
             curElement = pqBloodList.get(i);
             //adds the priority queue to the getDetails method
-            print = print.concat(curElement.getDetails() + " \n Priority: "+curElement.getPriority());
+            print = print.concat(curElement.getDetails() + " \n Priority: "+curElement.getPriority()+"\n \n");
         }
         return print;
     }
     
+    //Similar to printPQueue, but it checks if the priority is equal to a specific one
+    
+    public String patientPriority(int i, int priority){
+        
+        //Base case to stop index from going out of range
+        if(i >= pqBloodList.size()){
+            return "";
+        }
+        
+        PQElement curElement = pqBloodList.get(i);
+        
+        
+        //For each priority, it will display what type it is
+        //When the loop finishes,it adds the string and calls itself and adds 1 onto the index to print the next one
+        if(curElement.getPriority() == priority && priority == 1){
+            return "Low Priority Patient: \n"+curElement.getDetails()+"\n \n" + patientPriority(i + 1, priority);
+            
+        }
+        else if(curElement.getPriority() == priority && priority == 2){
+            return "Medium Priority Patient: \n"+curElement.getDetails()+"\n \n" + patientPriority(i + 1, priority);
+        }
+        
+        else if(curElement.getPriority() == priority && priority == 3){
+            return "Urgent Priority Patient: \n"+curElement.getDetails()+"\n \n" + patientPriority(i + 1, priority);
+        }
+        else{
+            return "";
+        }
+            
+        
+       
+        
+        
+    }
+   
+
+
+
+    
+    
+    
+   
     
    
     

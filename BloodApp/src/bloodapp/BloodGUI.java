@@ -21,6 +21,7 @@ public class BloodGUI extends javax.swing.JFrame {
     public BloodGUI() {
         sBloodList = new Stack();
         pqBloodList = new PriorityQueue();
+        
         initComponents();
         
     }
@@ -52,6 +53,7 @@ public class BloodGUI extends javax.swing.JFrame {
         wardYesRb = new javax.swing.JRadioButton();
         wardNoRb = new javax.swing.JRadioButton();
         urgentPatientsBtn = new javax.swing.JToggleButton();
+        allPatientsBtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -137,6 +139,15 @@ public class BloodGUI extends javax.swing.JFrame {
         });
         getContentPane().add(urgentPatientsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 150, 30));
 
+        allPatientsBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        allPatientsBtn.setText("Show All Patients");
+        allPatientsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allPatientsBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(allPatientsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, 180, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -149,6 +160,9 @@ public class BloodGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_priorityWarnBtnActionPerformed
 
+    
+    
+    
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
         int priority;
@@ -221,10 +235,24 @@ public class BloodGUI extends javax.swing.JFrame {
     private void urgentPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urgentPatientsBtnActionPerformed
         // TODO add your handling code here:
         
+        JOptionPane.showMessageDialog(null, pqBloodList.patientPriority(0,2));
         
+       
+        
+        
+        
+    
+            
+        
+   
 
        
     }//GEN-LAST:event_urgentPatientsBtnActionPerformed
+
+    private void allPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allPatientsBtnActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, pqBloodList.printPQueue());
+    }//GEN-LAST:event_allPatientsBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +292,7 @@ public class BloodGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ageLbl;
     private javax.swing.JTextField ageTf;
+    private javax.swing.JToggleButton allPatientsBtn;
     private javax.swing.JLabel gpLbl1;
     private javax.swing.JTextField gpTf;
     private javax.swing.JLabel jLabel1;
