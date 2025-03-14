@@ -54,6 +54,8 @@ public class BloodGUI extends javax.swing.JFrame {
         wardNoRb = new javax.swing.JRadioButton();
         urgentPatientsBtn = new javax.swing.JToggleButton();
         allPatientsBtn = new javax.swing.JToggleButton();
+        priorityCheckTf = new javax.swing.JTextField();
+        priorityCheckLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,7 +70,7 @@ public class BloodGUI extends javax.swing.JFrame {
 
         priorityLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         priorityLbl.setText("Priority Level:");
-        getContentPane().add(priorityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 130, -1));
+        getContentPane().add(priorityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, -1));
         getContentPane().add(priorityTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 170, 30));
         getContentPane().add(nameTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 170, 30));
 
@@ -131,13 +133,13 @@ public class BloodGUI extends javax.swing.JFrame {
         getContentPane().add(wardNoRb, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, -1));
 
         urgentPatientsBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        urgentPatientsBtn.setText("Urgent Patients");
+        urgentPatientsBtn.setText("Display Patients by Priority");
         urgentPatientsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 urgentPatientsBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(urgentPatientsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 150, 30));
+        getContentPane().add(urgentPatientsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 510, 230, 30));
 
         allPatientsBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         allPatientsBtn.setText("Show All Patients");
@@ -146,7 +148,12 @@ public class BloodGUI extends javax.swing.JFrame {
                 allPatientsBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(allPatientsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, 180, 30));
+        getContentPane().add(allPatientsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 180, 30));
+        getContentPane().add(priorityCheckTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 170, 40));
+
+        priorityCheckLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        priorityCheckLbl.setText("Priority:");
+        getContentPane().add(priorityCheckLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 130, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -235,8 +242,26 @@ public class BloodGUI extends javax.swing.JFrame {
     private void urgentPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urgentPatientsBtnActionPerformed
         // TODO add your handling code here:
         
-        JOptionPane.showMessageDialog(null, pqBloodList.patientPriority(0,2));
+        int priority = Integer.parseInt(priorityCheckTf.getText());
+        if(priority > 3 || priority <= 0){
+            JOptionPane.showMessageDialog(null, "Invalid priority, please try a value between 1-3");
+        }
         
+        //If the priority list displays a blank message, remove it
+        //otherwise, display each Patient with i priority
+        else{
+            for(int i = 0; i<pqBloodList.size(); i++){
+                if(pqBloodList.patientPriority(i, priority) == ""){
+                    
+                }
+                
+                else{
+                  JOptionPane.showMessageDialog(null, pqBloodList.patientPriority(i,priority));
+                  break;
+                }
+                
+            }
+        }
        
         
         
@@ -251,7 +276,12 @@ public class BloodGUI extends javax.swing.JFrame {
 
     private void allPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allPatientsBtnActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, pqBloodList.printPQueue());
+        if(pqBloodList.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No Patients added");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, pqBloodList.printPQueue());
+        }
     }//GEN-LAST:event_allPatientsBtnActionPerformed
 
     /**
@@ -299,6 +329,8 @@ public class BloodGUI extends javax.swing.JFrame {
     private javax.swing.JTextField nameTf;
     private javax.swing.JToggleButton nextPatientBtn;
     private javax.swing.JToggleButton noShowBtn;
+    private javax.swing.JLabel priorityCheckLbl;
+    private javax.swing.JTextField priorityCheckTf;
     private javax.swing.JLabel priorityLbl;
     private javax.swing.JTextField priorityTf;
     private javax.swing.JToggleButton priorityWarnBtn;

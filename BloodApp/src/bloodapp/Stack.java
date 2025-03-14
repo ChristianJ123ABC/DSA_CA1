@@ -55,6 +55,7 @@ public class Stack implements SInterface {
         }
     }
     
+    //Used exclusively for no show patients
     public String displayStack(){
         int i;
         String message =  " ";
@@ -70,6 +71,9 @@ public class Stack implements SInterface {
                message = message.concat(sBloodList.get(sBloodList.size()-1).toString()+"\n"); //Used to print an object
 
                 
+            }
+            else{
+                message = "No-Show List Empty";
             }
         }
         return message;
