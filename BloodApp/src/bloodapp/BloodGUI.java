@@ -81,7 +81,7 @@ public class BloodGUI extends javax.swing.JFrame {
 
         priorityLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         priorityLbl.setText("Priority Level:");
-        getContentPane().add(priorityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, -1));
+        getContentPane().add(priorityLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 130, -1));
         getContentPane().add(priorityTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 170, 30));
         getContentPane().add(nameTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 170, 30));
 
@@ -115,7 +115,7 @@ public class BloodGUI extends javax.swing.JFrame {
                 nextPatientBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(nextPatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 150, -1));
+        getContentPane().add(nextPatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 150, 30));
 
         noShowBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         noShowBtn.setText("Last 5 People Who Have Not Shown");
@@ -298,12 +298,16 @@ public class BloodGUI extends javax.swing.JFrame {
             
         }
         
+        
         //If the priority list displays a blank message, remove it
         //otherwise, display each Patient with i priority
         else{
             for(int i = 0; i<pqBloodList.size(); i++){
                 if(pqBloodList.patientPriority(i, priority) == ""){ //Used to stop blank JOptionPanes appearing
                     
+                }
+                if(pqBloodList.patientPriority(i, priority) == "" && !pqBloodList.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Patients with that priority level are not on the list");
                 }
                 
                 else{

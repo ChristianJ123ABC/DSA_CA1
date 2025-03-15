@@ -18,11 +18,6 @@ public class SLLNode {
         this.next = next;
     }
 
-    
-    //Used incase of object error when printing SLLs
-    public String toString() {
-        return element.toString();
-    }
 
     public Object getElement() {
         return element;
@@ -38,5 +33,9 @@ public class SLLNode {
 
     public void setNext(SLLNode next) {
         this.next = next;
+    }
+    
+    public String toString() {
+        return element.toString();
     }
 }

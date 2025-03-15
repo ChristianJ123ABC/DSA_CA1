@@ -10,9 +10,9 @@ package bloodapp;
  */
 //Sources: Week 3 - SLL and PQ SinglyLinkedListApp Solution
 public interface LinearListInterface {
-    public void add(int position, Object theElement);
+    public void add(int position, Object element);
 
-    public void add(Object theElement);
+    public void add(Object element);
 
     public Object get(int position);
 

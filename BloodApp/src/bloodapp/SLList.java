@@ -42,13 +42,13 @@ public class SLList implements LinearListInterface {
 
    
    //First add method that places them into a specific index / position
-    public void add(int position, Object theElement) {
+    public void add(int position, Object element) {
         if (position == 1) {
-            SLLNode newNode = new SLLNode(theElement, head);
+            SLLNode newNode = new SLLNode(element, head);
             head = newNode;
         } else {
             setCurrent(position);
-            SLLNode newNode = new SLLNode(theElement, currNode);
+            SLLNode newNode = new SLLNode(element, currNode);
             prevNode.setNext(newNode);
         }
         //Increases list size for new elements
@@ -57,8 +57,8 @@ public class SLList implements LinearListInterface {
 
     
     //Second add method that adds the element at the end of the list 
-    public void add(Object theElement) {
-        SLLNode newNode = new SLLNode(theElement, null);
+    public void add(Object element) {
+        SLLNode newNode = new SLLNode(element, null);
         if (head == null) {
             head = newNode;
         } else {
